@@ -1,32 +1,37 @@
-# Übungsprojekt: Punch Clock
+# Project Work OwlNet - AI-Powered Coworking Space
 
-Punch Clock ist ein Zeiterfassungssystem, welches mit Quarkus entwickelt wird.
+## Background
 
-## Erste Schritte
+OwlNet, a pioneering project in Zurich's agglomeration, is setting the stage for a digitally enhanced coworking space experience. This initiative focuses on leveraging AI technology to streamline member management and optimize space utilization.
 
-1. Erstelle eine Kopie (fork) von diesem Projekt.
-1. Stelle sicher, dass Docker installiert ist und läuft.
-1. Stelle sicher, dass Visual Studio Code und die Erweiterung Remote Container installiert ist.
-1. Klone (clone) das Projekt lokal, um damit arbeiten zu können.
-1. Öffne das Projekt mit Visual Studio Code.
-1. Öffne das Projekt im Entwicklungscontainer.
-1. Starte das Projekt mit dem Kommando `Quarkus: Debug current Quarkus Project`
-1. Probiere die Client-Applikation unter http://localhost:8080 aus.
-1. Schaue die API auf http://localhost:8080/q/swagger-ui/ an.
+## Setup
 
-## Datenbank
+1. Clone the Git project.
+2. Ensure Docker is installed and running.
+3. Open the directory with VS Code.
+4. Install Dev-Container Extension [here](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+5. Open the project in the development container.
+6. Start the project with the command `Quarkus: Debug current Quarkus Project`.
 
-Die Daten werden in einer PostgreSQL-Datenbank gespeichert. In der Entwicklungsumgebung wird diese in der [docker-compose-yml](./.devcontainer/docker-compose.yml) konfiguriert.
+### Web Application
 
-### Datenbankadministration
+The application runs at the address and port: http://localhost:8080
 
-Über http://localhost:5050 ist PgAdmin4 erreichbar. Damit lässt sich die Datenbank komfortabel verwalten. Der Benutzername lautet `zli@example.com` und das Passwort `zli*123`. Die Verbindung zur PostgreSQL-Datenbank muss zuerst mit folgenden Daten konfiguriert werden:
+Swagger API Interface is available at http://localhost:8080/q/swagger-ui/
+
+### Database
+
+The data is stored in a PostgreSQL database. In the development environment, it is configured in the [docker-compose.yml](./.devcontainer/docker-compose.yml).
+
+### Database Administration
+
+PgAdmin4 is accessible at http://localhost:5050 for convenient database management. The username is `zli@example.com` and the password is `zli*123`. The connection to the PostgreSQL database must first be configured with the following data:
  - Host name/address: `db`
  - Port: `5432`
  - Maintenance database: `postgres`
  - Username: `postgres`
  - Password: `postgres`
 
-## Automatische Tests
+### Test Data
 
-Die automatischen Tests können mit `./mvnw quarkus:test` ausgeführt werden. Für die automatischen Tests wird nicht die PostgreSQL-Datenbank verwendet, sondern eine H2-Datenbank, welche sich im Arbeitsspeicher während der Ausführung befindet.
+Test data can be found in `src/main/resources/import.sql`. They are automatically loaded when Quarkus starts.
