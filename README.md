@@ -91,6 +91,12 @@ Test data reflects various user scenarios for thorough application testing. It i
 
 **Automated Data Loading**: In development mode, test data is automatically loaded into the database on application start.
 
+## Project Documentation
+
+### Version History
+
+For a comprehensive overview of the development process and changes made throughout the project, refer to the `OwlNet_Git_Log.txt` file. This document contains a detailed log of all commits, providing insights into the evolution of the OwlNet project. It serves as an essential resource for understanding the chronological development and decision-making process behind the application.
+
 ### README Note
 
 This README is crafted to offer a complete guide for developers contributing to the OwlNet project, focusing on AI integration and creating a user-friendly coworking space.
