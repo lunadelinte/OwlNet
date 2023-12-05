@@ -422,3 +422,189 @@ This enhancement to the OwlNet documentation includes detailed class definitions
 
 ### Note
 *This section of the document was prepared with the assistance of ChatGPT, an AI language model developed by OpenAI, to ensure accuracy and efficiency.*
+
+
+
+## 8. Relations (Relationen)
+
+### Implementing and Annotating Relationships
+
+In the OwlNet application, it's crucial to correctly define and annotate the relationships between different entities. This ensures that the data model reflects the real-world interactions and dependencies among various components of the coworking space.
+
+#### A. Defining Necessary Attributes for Relationships
+
+1. **User-Booking Relationship:**
+   - In the `User` class, a list of `Booking` entities represents the user's bookings.
+   - In the `Booking` class, a `User` attribute links the booking to a specific user.
+2. **Workspace-Booking Relationship:**
+   - In the `Workspace` class, a list of `Booking` entities represents bookings made for that workspace.
+   - In the `Booking` class, a `Workspace` attribute links the booking to a specific workspace.
+3. **User-Event (Many-to-Many) Relationship:**
+   - This relationship requires a junction table.
+   - Define a `List<Event>` in the `User` class and a `List<User>` in the `Event` class for this many-to-many relationship.
+4. **Admin-User Relationship:**
+   - In the `Admin` class, a list of `User` entities represents the users managed by an admin.
+
+#### B. Annotating Relationship Attributes
+
+1. **User-Booking Relationship:**
+   - Annotate the `bookings` list in the `User` class with `@OneToMany(mappedBy = "user")`.
+   - Annotate the `user` attribute in the `Booking` class with `@ManyToOne`.
+2. **Workspace-Booking Relationship:**
+   - Annotate the `bookings` list in the `Workspace` class with `@OneToMany(mappedBy = "workspace")`.
+   - Annotate the `workspace` attribute in the `Booking` class with `@ManyToOne`.
+3. **User-Event Relationship:**
+   - Annotate the relationship in both the `User` and `Event` classes with `@ManyToMany`.
+4. **Admin-User Relationship:**
+   - Annotate the `users` list in the `Admin` class with `@OneToMany(mappedBy = "admin")`.
+
+#### C. Serialization of Entities with Relationships
+
+- Ensure that all entities, especially those with relationships, are serializable.
+- Be mindful of issues such as the Hibernate N+1 problem and lazy loading strategies.
+- Utilize appropriate JSON serialization and deserialization strategies, especially for handling many-to-many relationships effectively.
+
+#### Java Code Example for Entity Relationships
+
+```
+javaCopy code
+@Entity
+public class User {
+    // Other attributes...
+
+    @OneToMany(mappedBy = "user")
+    private List<Booking> bookings;
+
+    // Getters and Setters...
+}
+
+@Entity
+public class Booking {
+    // Other attributes...
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "workspace_id")
+    private Workspace workspace;
+
+    // Getters and Setters...
+}
+
+@Entity
+public class Workspace {
+    // Other attributes...
+
+    @OneToMany(mappedBy = "workspace")
+    private List<Booking> bookings;
+
+    // Getters and Setters...
+}
+
+@Entity
+public class Admin {
+    // Other attributes...
+
+    @OneToMany(mappedBy = "admin")
+    private List<User> users;
+
+    // Getters and Setters...
+}
+```
+
+This section of the documentation has been meticulously prepared to guide the implementation of relationships between entities within the OwlNet application. By adhering to these guidelines, the application's data model will be robust, efficient, and reflective of the actual operational dynamics of the coworking space.
+
+### Note
+
+*This section of the document was prepared with the assistance of ChatGPT, an AI language model developed by OpenAI, to ensure accuracy and efficiency in application development.*
+
+
+
+## 9. Testdaten (Test Data)
+
+To ensure the robustness and functionality of the OwlNet application, a comprehensive test dataset is meticulously created according to the following criteria:
+
+### A. Comprehensive Test Data Coverage
+
+1. **Objective:**
+   - The test dataset comprehensively covers all functional and non-functional requirements of the application.
+   - Each user story and scenario mentioned in the application's specification should be testable with the provided data.
+2. **Implementation:**
+   - Create diverse sets of data for each entity: Users, Bookings, Workspaces, Events, and Admins.
+   - Test scenarios include typical user interactions, edge cases, and exceptional situations to validate all aspects of the application.
+
+### B. Automated Loading of Test Data
+
+1. **Objective:**
+   - Test data should automatically load when the application starts in development mode.
+   - This ensures a quick setup for developers and testers to begin testing without manual data entry.
+2. **Implementation:**
+   - Utilize a data seeding script or mechanism to populate the database with test data upon startup in development mode.
+   - This script should be configurable to allow easy toggling between development and production modes.
+
+### C. Documentation in README.md
+
+1. **Objective:**
+   - The `README.md` file should include clear instructions on how and where the test data is defined and loaded.
+   - This provides guidance for new developers or contributors to understand the testing setup.
+2. **Implementation:**
+   - In the `README.md` file, add a section detailing the test data generation process.
+   - Include instructions on how to enable or disable the automatic loading of test data.
+   - Document the structure of the test data and how it maps to the application's requirements.
+
+### Code Example for Data Seeding Script
+
+```
+javaCopy code
+// Example Java code for data seeding script
+
+public class DataSeeder {
+
+    public static void main(String[] args) {
+        if (isDevelopmentMode()) {
+            loadTestData();
+        }
+    }
+
+    private static boolean isDevelopmentMode() {
+        // Logic to determine if the application is running in development mode
+    }
+
+    private static void loadTestData() {
+        // Logic to load test data into the database
+    }
+}
+```
+
+### Note on README.md Update
+
+- Add a new section in `README.md` titled "Setting Up Test Data".
+- Describe the data seeding process, including how to toggle between development and production modes.
+- Provide an overview of the test data structure and its alignment with application requirements.
+
+By adhering to these guidelines, OwlNet ensures a thorough testing process, enabling the application to be rigorously validated against all specified requirements. This comprehensive approach to test data management significantly contributes to the application's overall quality and reliability.
+
+### Note
+
+*This section of the document was prepared with the assistance of ChatGPT, an AI language model developed by OpenAI, to ensure accuracy and efficiency in application development.*
+
+
+
+### Chatverlauf pending
+
+
+
+![User](https://lh3.googleusercontent.com/a/ALm5wu0aJecSTFSjJG08DgE3yxN2Rsv2MLJojcMnldjFTA=s96-c)
+
+You
+
+now change this readme (which is one from my friend), so that it works for my project : # Projektarbeit Uek M223 - Coworking-Space-Buchungsapplikation ## Ausgangslage Ein Coworking Space in der Agglomeration von Zürich möchte in Zukunft seine Mitglieder und die Nutzung des Angebots digital über eine Webapplikation erfassen. Dazu sollte zuerst ein minimaler Prototyp realisiert werden, um den Kunden besser abholen zu können. ## Aufgabe Die zu entwickelnde Prototyp soll aus einer Server- und Client-Applikation bestehen. Die Client-Applikation benutzt die Server-Applikation über eine HTTP API. Für den Prototyp sind folgende, menschliche Akteure vorgesehen: - Administrator - Mitglied - Besucher (nicht authentifizierter Benutzer) ## Funktionale Anwendungsfälle Folgende funktionalen Anwendungsfälle sollen mindestens im Prototypen implementiert werden: - Als Besucher möchte ich mich mit meinem Vor- und Nachnamen, meiner E-Mail-Adresse und einem Passwort registrieren, damit ich die Rolle Mitglied bekommen kann. - Als Besucher möchte ich mich mit meiner E-Mail-Adresse und meinem Passwort anmelden, damit ich mich als Mitglied oder Administrator authentifizieren kann. - Als Mitglied möchte ich halbe und ganze Tage an bestimmten Daten im Coworking Space als Buchung anfragen, damit ich die Angebote des Coworking Space nutzen kann. - Als Mitglied möchte ich den Status meiner Buchungen überprüfen, damit ich erfahre, ob meine Buchung bestätigt oder abgelehnt wurde. - Als Mitglied kann ich meine zukünftigen Buchungen stornieren, damit ich auf Veränderungen in meiner Terminplanung reagieren kann. - Als Administrator kann ich Mitglieder verwalten (erstellen, bearbeiten, löschen), damit ich die Mitglieder organisieren kann. - Als Administrator kann ich Buchungsanfragen akzeptieren und ablehnen, damit die Mitglieder das Angebot des Coworking Space nutzen können. - Als Administrator kann ich Buchungen verwalten (erstellen, bearbeiten, löschen), damit ich die Buchungen organisieren kann. ## Nicht-funktionale Anwendungsfälle Folgende nicht-funktionale Anforderungen sollen mindestens im Prototypen umgesetzt werden: - Das Datenmodell erfüllt die erste, zweite und dritte Normalform nach der relationalen Entwurfstheorie. - Der erste Besucher bekommt nach der Registrierung die Rolle Administrator anstatt Mitglied. - Die Authentifizierung erfolgt mittels JSON Web Token (JWT nach RFC 7519) über den HTTP Header 'Authorization'. - Das JWT läuft 24 Stunden nach der Ausstellung ab und verliert seine Gültigkeit. - Das JWT wird clientseitig während dessen Lebensdauer persistent aufbewahrt. ## 1 - Anforderungen analysieren Zusätzliche, projektrelevante Anforderungen wurden nach folgenden Kriterien beschrieben. ### 1.1 Erweiterte Anforderungen #### A. Drei zusätzliche, einzigartige, funktionale Anforderungen sind als User Stories (Als [Akteur], kann ich [Funktion], damit [Kontext]) beschrieben. - Als Mitglied, kann ich weitere Mitglieder zu einer Buchung hinzufügen, damit ein Coworking-Termin im Coworking-Space erstellt werden kann - Als Mitglied, kann ich spezifische Meetingräume buchen, damit Meetings abgehalten werden können - Als Mitglied, kann ich meiner Buchung Noccos (Energy-Drinks) hinzufügen, damit ich koffeinmässig fit bin für meine Arbeit  #### B. Drei zusätzliche, einzigartige, nicht-funktionale Anforderungen sind messbar beschrieben. - Passwörter werden gehasht abgelegt - Der User muss nie länger als eine Sekunde auf das laden der Seite warten - Die Web-Applikation hat 99 % Verfügbarkeit #### C. Die zusätzlichen Anforderungen sind projektrelevant und auf die Bedürfnisse von einem Coworking Space abgestimmt. #### Alle Funktionale Anwendungsfälle Folgende funktionalen Anwendungsfälle sollen mindestens im Prototypen implementiert werden: - Als Besucher möchte ich mich mit meinem Vor- und Nachnamen, meiner E-Mail-Adresse und einem Passwort registrieren, damit ich die Rolle Mitglied bekommen kann. - Als Besucher möchte ich mich mit meiner E-Mail-Adresse und meinem Passwort anmelden, damit ich mich als Mitglied oder Administrator authentifizieren kann. - Als Mitglied möchte ich halbe und ganze Tage an bestimmten Daten im Coworking Space als Buchung anfragen, damit ich die Angebote des Coworking Space nutzen kann. - Als Mitglied möchte ich den Status meiner Buchungen überprüfen, damit ich erfahre, ob meine Buchung bestätigt oder abgelehnt wurde. - Als Mitglied kann ich meine zukünftigen Buchungen stornieren, damit ich auf Veränderungen in meiner Terminplanung reagieren kann. - Als Administrator kann ich Mitglieder verwalten (erstellen, bearbeiten, löschen), damit ich die Mitglieder organisieren kann. - Als Administrator kann ich Buchungsanfragen akzeptieren und ablehnen, damit die Mitglieder das Angebot des Coworking Space nutzen können. - Als Administrator kann ich Buchungen verwalten (erstellen, bearbeiten, löschen), damit ich die Buchungen organisieren kann. - Als Mitglied, kann ich weitere Mitglieder zu einer Buchung hinzufügen, damit ein Coworking-Termin im Coworking-Space erstellt werden kann - Als Mitglied, kann ich spezifische Meetingräume buchen, damit Meetings abgehalten werden können - Als Mitglied, kann ich meiner Buchung Noccos (Energy-Drinks) hinzufügen, damit ich koffeinmässig fit bin für meine Arbeit  #### Alle nicht-funktionale Anwendungsfälle Folgende nicht-funktionale Anforderungen sollen mindestens im Prototypen umgesetzt werden: - Das Datenmodell erfüllt die erste, zweite und dritte Normalform nach der relationalen Entwurfstheorie. - Der erste Besucher bekommt nach der Registrierung die Rolle Administrator anstatt Mitglied. - Die Authentifizierung erfolgt mittels JSON Web Token (JWT nach RFC 7519) über den HTTP Header 'Authorization'. - Das JWT läuft 24 Stunden nach der Ausstellung ab und verliert seine Gültigkeit. - Das JWT wird clientseitig während dessen Lebensdauer persistent aufbewahrt. - Passwörter werden gehasht abgelegt - Der User muss nie länger als eine Sekunde auf das laden der Seite warten - Die Web-Applikation hat 99 % Verfügbarkeit ### 1.2 - Persona Personas wurden für die im Projekt vorhandenen Akteure nach folgenden Kriterien beschrieben. #### Anforderungen - A. Für jeden Akteur wird eine Persona beschrieben. - B. Jede Persona ist mit Vor- und Nachnamen, Alter und Geschlecht beschrieben. - C. Jede Persona ist mit einem passenden Bild beschrieben. - D. Zu jeder Persona ist ihre berufliche Tätigkeit beschrieben. - E. Zu jeder Persona ist beschrieben, aus welchen Gründen die Angebote von einem Coworking Space benutzt werden. #### Personas ##### Persona 1 - Nicht angemeldeter User <img src="assets/richie_rich.png" width="300"> - **Name:** Richie Rich - **Alter:** 10 - **Geschlecht:** Männlich - **Rolle:** Nicht angemeldeter User - **Beruf:** Richie ist ein reiches Schulkind. - **Gründe für Besuch von Coworking Space:**  Richie wird das Rich-Imperium von seinem Vater Richard Rich Sr. übernehmen und möchte sich für den Coworking Space anmelden um dort seine erste Meetings abhalten zu können. ##### Persona 2 - Angemeldeter User <img src="assets/patrick_bateman.png" width="200" height ="200"> - **Name:** Patrick Bateman - **Alter:** 27 - **Geschlecht:** Männlich - **Rolle:** User - **Beruf:** Bateman ist **Börsenmakler bei Pierce & Pierce**, arbeitet aber eigentlich kaum. - **Gründe für Besuch von Coworking Space:** Patrick Bateman möchte gerne einen Ort haben wo er potentielle Kunden und Geschäftspartner treffen kann. Bateman möchte auch einen Ort haben an dem er in aller Ruhe mit seinen Arbeitskollegen Visitenkarten vergleichen kann. ##### Persona 3 - Administrator <img src="assets/elon_musk.png" width="200" height ="200"> - **Name:** Elon Musk - **Alter:** 52 - **Geschlecht:** Männlich - **Rolle:** Administrator - **Beruf:** Elon Musk war ein Multi-Milliardär und Unternehmer, der aber mit dem Kauf von Twitter die Firma und sich selber in den Ruin trieb. - **Gründe für Besuch von Coworking Space:** Elon Musk möchte gerne eine neue Firma starten und hat sich daher dafür entschieden in der Zürcher Agglomeration einen Coworking-Space zu bauen. Mit seiner Erfahrung von Twitter / X möchte er als Administrator den reibungslosen Betrieb der Buchungsplatform garantieren. ### 1.3 - Anwendungsfalldiagramm Ein Anwendungsfalldiagramm wurde nach UML 2 und folgenden Kriterien erstellt. #### Anforderungen - A. Der Systemkontext und ein projektrelevanter Systemtitel ist abgebildet. - B. Alle Akteure und deren Namen sind visualisiert. - C. Alle funktionalen Anforderungen (inkl. der zusätzlichen Anforderungen aus Kriterium 1) sind als Anwendungsfälle abgebildet. - D. Die Relationen zwischen Akteuren und Anforderungen sind visualisiert. #### Diagramm - PlantUML code ```plantuml @startuml title Anwendungsfalldiagramm - Coworking-Space-Buchungstool left to right direction skinparam packageStyle rectangle actor Besucher as B actor Mitglied as M actor Administrator as A rectangle "Benutzer-Authentifizierung" {    B -- (Registrieren)    B -- (Anmelden) } rectangle "Buchungsverwaltung" {    M -- (Buchung anfragen)    M -- (Buchungsstatus überprüfen)    M -- (Buchung stornieren)    M -- (Mitglieder zur Buchung hinzufügen)    M -- (Bestimmte Meetingräume buchen)    M -- (Noccos zur Buchung hinzufügen)    A -- (Mitglieder verwalten)    A -- (Buchungsanfragen verwalten)    A -- (Buchungen verwalten) } @enduml ``` #### Diagramm - Bild <img src="assets/anwendungsfalldiagramm.png" height="800">
+
+
+
+### Notes:
+
+-Fachklassendiagramm machen
+
