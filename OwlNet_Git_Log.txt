@@ -1,3 +1,78 @@
+commit a3c8f60d152f3039aa03ec4e992dc473e2d63c3e
+Author: lucabindertbz <120111729+lucabindertbz@users.noreply.github.com>
+Date:   Tue Dec 5 23:26:58 2023 +0100
+
+    final code changes
+
+commit 1276d076eeaed183695734d9810997f268032cae
+Author: lucabindertbz <120111729+lucabindertbz@users.noreply.github.com>
+Date:   Tue Dec 5 23:03:39 2023 +0100
+
+    push so we dont lose everything
+
+commit 7673234d2072095584b7afcf18eb169a70637d2d
+Author: lucabindertbz <120111729+lucabindertbz@users.noreply.github.com>
+Date:   Tue Dec 5 18:51:02 2023 +0100
+
+    Update README.md
+    
+    fixed link to repository
+
+commit 7d27f9a367216dd08f46127ad10f014bb908a210
+Merge: 22fb8dc 1c1efa1
+Author: lucabindertbz <120111729+lucabindertbz@users.noreply.github.com>
+Date:   Tue Dec 5 18:50:02 2023 +0100
+
+    Merge branch 'main' of https://github.com/lunadelinte/OwlNet
+
+commit 22fb8dc5aca37510925bd6e1eac975db407d12a0
+Author: lucabindertbz <120111729+lucabindertbz@users.noreply.github.com>
+Date:   Tue Dec 5 18:49:15 2023 +0100
+
+    updated readme and added new git log file
+    
+    readme now has the correct link to the repository
+
+commit 1c1efa11a2633d0ba39b9df3ee8ab7274014bef0
+Author: Luna ✨ <120111729+lunadelinte@users.noreply.github.com>
+Date:   Tue Dec 5 18:47:41 2023 +0100
+
+    Update README.md
+    
+    updated the git clone link
+
+commit 30fc0ac4a3e6d23ed3b63700a949176826365161
+Author: lucabindertbz <120111729+lucabindertbz@users.noreply.github.com>
+Date:   Tue Dec 5 16:34:58 2023 +0100
+
+    Update README.md
+    
+    added the file location of the git log
+
+commit 475841abadb870c678e422dcdf735bf2f68187f8
+Author: lucabindertbz <120111729+lucabindertbz@users.noreply.github.com>
+Date:   Tue Dec 5 16:30:55 2023 +0100
+
+    added to the readme.md new section and generated a newer version of the git log
+    
+    ## Project Documentation
+    ### Version History
+    
+    new version of the git log is named:
+    OwlNet_Git_log_v1.1.txt
+
+commit c47b09973bd1022f60145faf928e6eff7cb92e4e
+Author: lucabindertbz <120111729+lucabindertbz@users.noreply.github.com>
+Date:   Tue Dec 5 16:22:18 2023 +0100
+
+    renamed the git log txt file to something more meaningful
+
+commit ac6e283d47798b7bcbbf1b7bf35e9aa888c342e0
+Author: lucabindertbz <120111729+lucabindertbz@users.noreply.github.com>
+Date:   Tue Dec 5 16:18:23 2023 +0100
+
+    Versionsgeschichte als Auszug aus dem verwendeten VCS
+
 commit 732ea9f3ed345df1492bcb077b6a3cc84f7604f9
 Author: lucabindertbz <120111729+lucabindertbz@users.noreply.github.com>
 Date:   Tue Dec 5 16:05:24 2023 +0100

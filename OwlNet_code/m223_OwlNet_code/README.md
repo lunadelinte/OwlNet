@@ -34,4 +34,4 @@ PgAdmin4 is accessible at http://localhost:5050 for convenient database manageme
 
 ### Test Data
 
-Test data can be found in `src/main/resources/import.sql`. They are automatically loaded when Quarkus starts.
+Test data can be found in `src/main/resources/test_data.sql`. They are automatically loaded when Quarkus starts.
