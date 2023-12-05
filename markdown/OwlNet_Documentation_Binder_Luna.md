@@ -12,6 +12,7 @@
 
 ![OwlNet Logo Redesign](/resources/images/logos/OwlNet%20Logo%20Redesign.png)
 
+![OwlNet HQ Luna](../resources/images/luna_hq/lunas_bureau.png)
 ### Key Features
 
 1. **Athena – AI Personal Assistant:**
@@ -590,77 +591,97 @@ By adhering to these guidelines, OwlNet ensures a thorough testing process, enab
 
 *This section of the document was prepared with the assistance of ChatGPT, an AI language model developed by OpenAI, to ensure accuracy and efficiency in application development.*
 
-## 10. Interface Implementation (Schnittstelle umsetzen)
+- ## 6. Automated Tests Implementation (Automatische Tests umsetzen)
 
-### A. Interface for Registration and Authentication (Registrierung und Authentifizierung)
+  ### A. End-to-End Testing for Registration and Authentication
 
-#### Implementation
+  #### Overview
 
-- Develop endpoints for user registration and authentication.
-- Ensure that the registration process captures essential user details such as name, email, and password.
-- Implement authentication using secure methods like JWT (JSON Web Tokens).
+  To ensure the robustness of the registration and authentication features in the OwlNet application, we implement comprehensive End-to-End tests. These tests cover various scenarios to validate both successful operations and appropriate handling of error conditions.
 
-#### Error Handling
+  #### Implementation: UserResourceTest.java
 
-- Implement comprehensive error handling for scenarios like duplicate email registration, invalid email formats, and incorrect password entries.
-- Provide clear and user-friendly error messages to the client.
+  Below is an example of a test class `UserResourceTest.java`, specifically designed to test the registration and authentication functionalities of the OwlNet application.
 
-#### Documentation
+  ```
+  javaCopy code
+  package ch.owl.net;
+  
+  import io.quarkus.test.common.QuarkusTestResource;
+  import io.quarkus.test.junit.QuarkusTest;
+  import io.quarkus.test.security.TestSecurity;
+  import org.junit.jupiter.api.Order;
+  import org.junit.jupiter.api.Test;
+  import org.junit.jupiter.api.TestMethodOrder;
+  import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+  import static io.restassured.RestAssured.given;
+  import static org.hamcrest.CoreMatchers.is;
+  import io.quarkus.test.h2.H2DatabaseTestResource;
+  
+  @QuarkusTest
+  @QuarkusTestResource(H2DatabaseTestResource.class)
+  @TestMethodOrder(OrderAnnotation.class)
+  public class UserResourceTest {
+  
+      @Test
+      @Order(1)
+      public void testRegistrationSuccess() {
+          given()
+              .body("{ \"email\": \"test@example.com\", \"password\": \"StrongPass!23\" }")
+              .contentType("application/json")
+              .when().post("/users/register")
+              .then()
+              .statusCode(200);
+      }
+  
+      @Test
+      @Order(2)
+      public void testRegistrationFailure() {
+          given()
+              .body("{ \"email\": \"\", \"password\": \"weak\" }")
+              .contentType("application/json")
+              .when().post("/users/register")
+              .then()
+              .statusCode(400);
+      }
+  
+      @Test
+      @Order(3)
+      @TestSecurity(user = "test@example.com", roles = "User")
+      public void testAuthenticationSuccess() {
+          given()
+              .body("{ \"email\": \"test@example.com\", \"password\": \"StrongPass!23\" }")
+              .contentType("application/json")
+              .when().post("/users/authenticate")
+              .then()
+              .statusCode(200);
+      }
+  
+      @Test
+      @Order(4)
+      public void testAuthenticationFailure() {
+          given()
+              .body("{ \"email\": \"test@example.com\", \"password\": \"WrongPassword\" }")
+              .contentType("application/json")
+              .when().post("/users/authenticate")
+              .then()
+              .statusCode(401);
+      }
+  }
+  ```
 
-- Document the API endpoints using the OpenAPI specification, detailing request and response formats, and possible HTTP status codes.
+  #### Test Case Descriptions
 
-### B. Interface for Managing Own Bookings as a Member
+  - `testRegistrationSuccess`: Validates successful user registration.
+  - `testRegistrationFailure`: Checks the system's response to registration with invalid data.
+  - `testAuthenticationSuccess`: Confirms successful user authentication.
+  - `testAuthenticationFailure`: Tests the system's response to incorrect login credentials.
 
-#### Features
+  Each test is designed to be independent and runs in a specified order, denoted by `@Order`. This structure ensures that each aspect of the registration and authentication process is thoroughly tested.
 
-- Allow members to create, view, and cancel their bookings.
-- Provide real-time availability checks and confirmations.
+  ### Note
 
-#### Implementation
-
-- Design endpoints for creating, viewing, and cancelling bookings.
-- Ensure integration with the backend to reflect real-time data.
-
-### C. Interface for Management of Bookings by Administrators
-
-#### Features
-
-- Enable administrators to view, accept, or reject booking requests.
-- Provide functionalities to manage booking schedules and occupancy.
-
-#### Implementation
-
-- Create dedicated endpoints for administrators to manage bookings.
-- Implement validations to ensure only authorized administrators can access these endpoints.
-
-### D. Interface for Management of Members by Administrators
-
-#### Features
-
-- Facilitate administrators to create, edit, and delete member profiles.
-- Implement search and filter functionalities for ease of management.
-
-#### Implementation
-
-- Develop endpoints that enable CRUD (Create, Read, Update, Delete) operations on member data.
-- Ensure secure access to these endpoints with appropriate authentication and authorization checks.
-
-### E. Interface for Additional Requirements
-
-#### Custom Implementations
-
-- Develop interfaces for additional features as per the extended requirements of the project.
-- This may include advanced booking options, event management, or other customized functionalities.
-
-### Implementation Standards
-
-- Ensure all interfaces adhere to RESTful principles and provide a consistent and intuitive API structure.
-- Pay special attention to security, scalability, and performance aspects.
-
-### Documentation
-
-- Document all interfaces comprehensively, adhering to OpenAPI standards.
-- Provide clear instructions and examples for ease of use by frontend developers and API consumers.
+  *This section, detailing the implementation of automated tests for registration and authentication, is an essential addition to the OwlNet documentation. It not only serves as a guide for developing robust tests but also as a template for testing other features within the application. This documentation was enhanced with the assistance of ChatGPT for precision and professional structuring.*
 
 ### Notes:
 
