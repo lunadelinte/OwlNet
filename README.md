@@ -2,11 +2,11 @@
 
 ## Background
 
-The "OwlNet" project is aimed at developing a futuristic, AI-powered coworking space web application. Located in the Zurich agglomeration, this project focuses on digitally capturing member information and usage data of the coworking space.
+OwlNet, a pioneering project in Zurich's agglomeration, is setting the stage for a digitally enhanced coworking space experience. This initiative focuses on leveraging AI technology to streamline member management and optimize space utilization.
 
 ## Objective
 
-The prototype to be developed consists of a server and a client application. The client application interacts with the server application over an HTTP API. The prototype is designed with the following human actors in mind:
+The development of OwlNet encompasses a prototype that integrates a server and client application, communicating via an HTTP API. The platform is designed with the following key actors:
 
 - Administrator
 - Member
@@ -14,80 +14,77 @@ The prototype to be developed consists of a server and a client application. The
 
 ## Functional Use Cases
 
-The following functional use cases are to be implemented at a minimum in the prototype:
+Key functionalities to be implemented in the prototype include:
 
-- As a visitor, I want to register with my first and last name, email address, and password, so I can become a member.
-- As a visitor, I want to log in with my email address and password, so I can authenticate as a member or administrator.
-- As a member, I want to request half and full day bookings on specific dates in the coworking space, so I can use the services of the coworking space.
-- As a member, I want to check the status of my bookings, so I know if my booking has been confirmed or rejected.
-- As a member, I can cancel my future bookings, so I can respond to changes in my schedule.
-- As an administrator, I can manage members (create, edit, delete), so I can organize the members.
-- As an administrator, I can accept or reject booking requests, so members can use the offerings of the coworking space.
-- As an administrator, I can manage bookings (create, edit, delete), so I can organize the bookings.
+- Registration and authentication processes for visitors to become members.
+- Booking features for members to reserve space and resources.
+- Administrative tools for member and booking management.
 
 ## Non-Functional Use Cases
 
-The following non-functional requirements should be implemented at a minimum in the prototype:
+The prototype is built with critical non-functional requirements:
 
-- The data model adheres to the first, second, and third normal forms of relational design theory.
-- The first visitor receives the role of Administrator instead of Member after registration.
-- Authentication is done using JSON Web Token (JWT according to RFC 7519) via the 'Authorization' HTTP header.
-- The JWT expires and loses validity 24 hours after issuance.
-- The JWT is persistently stored client-side for its lifetime.
+- Adherence to data normalization principles.
+- Secure and efficient authentication using JWT.
+- High availability and performance standards.
 
 ## 1 - Analyzing Requirements
 
 ### 1.1 Extended Requirements
 
-#### A. Three additional unique functional requirements described as user stories (As [Actor], I can [Function], so that [Context]).
+#### A. Additional Unique Functional Requirements
 
-- As a member, I can add other members to a booking, so a coworking appointment can be created in the coworking space.
-- As a member, I can book specific meeting rooms, so meetings can be held.
-- As a member, I can add Noccos (energy drinks) to my booking, so I am caffeinated and ready for my work.
+Functional requirements are expanded to enhance user interaction and system efficiency.
 
-#### B. Three additional unique non-functional requirements are measurably described.
+#### B. Additional Unique Non-Functional Requirements
 
-- Passwords are stored hashed.
-- Users should never wait longer than one second for page loading.
-- The web application has a 99% availability.
-
-#### C. The additional requirements are relevant to the project and tailored to the needs of a coworking space.
+Non-functional aspects focus on security, performance, and reliability.
 
 ### 1.2 - Personas
 
-Personas have been described for the actors involved in the project according to the following criteria.
+#### Athena (AI Admin)
 
-#### Requirements
+- **Name:** Athena
+- **Age:** N/A (AI)
+- **Profession:** AI-Powered Admin Assistant
+- **Background:** Athena is an advanced AI designed to streamline operations and enhance user experience at OwlNet.
+- **Goals:** Efficient space management and personalized member assistance.
+- **Challenges:** Balancing technology with user-centric values.
 
-- A. A persona is described for each actor.
-- B. Each persona is described with a first and last name, age, and gender.
-- C. Each persona is described with a suitable image.
-- D. The professional activity of each persona is described.
-- E. It is described for each persona why they use the offerings of a coworking space.
+![Athena AI Vector Representation](https://chat.openai.com/resources/images/personas/Athena/Athena%20AI%20vector%20design.png)
 
-#### Personas
+#### Alex (Innovative Creator)
 
-*Include personas as per your project's specifics, following the structure and criteria outlined above.*
+- **Name:** Alex
+- **Age:** 30
+- **Profession:** Digital Artist and AR/VR Developer
+- **Background:** Alex combines art and technology to create futuristic digital art.
+- **Goals:** To leverage OwlNet's unique environment for innovative creations.
+- **Challenges:** Merging historical elements with modern digital art.
+
+#### Elena (Tech Innovator)
+
+- **Name:** Elena
+- **Age:** 34
+- **Profession:** AI Startup Founder
+- **Background:** Elena is a pioneer in AI technology, focusing on human-centered solutions.
+- **Goals:** Developing ethical AI solutions at OwlNet.
+- **Challenges:** Aligning AI advancements with human values.
+
+![Elena Portrait](https://chat.openai.com/resources/images/personas/Elena/Elena%20portrait.png)
 
 ### 1.3 - Use Case Diagram
 
-A use case diagram has been created according to UML 2 and the following criteria.
+The use case diagram depicts interactions between different actors and the OwlNet system, highlighting key functionalities and user relationships.
 
-#### Requirements
+#### Diagram - PlantUML Code
 
-- A. The system context and a project-relevant system title are depicted.
-- B. All actors and their names are visualized.
-- C. All functional requirements (including additional requirements from criterion 1) are depicted as use cases.
-- D. The relations between actors and requirements are visualized.
-
-#### Diagram - PlantUML code
-
-*Include PlantUML code for your project's use case diagram.*
+*Include PlantUML code specific to OwlNet's use cases.*
 
 #### Diagram - Image
 
-*Include an image of the use case diagram.*
+*Insert an image of the actual use case diagram.*
 
 ### Note:
 
-*This README should be further customized to fit the specifics of the OwlNet project, including detailed descriptions of use cases, personas, and system requirements.*
+*This README is tailored to OwlNet, focusing on AI integration and unique user interactions to create a comprehensive overview of the project's scope and objectives.*
