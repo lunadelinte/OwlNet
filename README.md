@@ -95,7 +95,7 @@ Test data reflects various user scenarios for thorough application testing. It i
 
 ### Version History
 
-For a comprehensive overview of the development process and changes made throughout the project, refer to the `OwlNet_Git_Log.txt` file. This document contains a detailed log of all commits, providing insights into the evolution of the OwlNet project. It serves as an essential resource for understanding the chronological development and decision-making process behind the application.
+For a comprehensive overview of the development process and changes made throughout the project, refer to the [OwlNet Git Log](./OwlNet_Git_Log.txt). This document contains a detailed log of all commits, providing insights into the evolution of the OwlNet project. It serves as an essential resource for understanding the chronological development and decision-making process behind the application.
 
 ### README Note
 
