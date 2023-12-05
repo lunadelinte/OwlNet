@@ -27,6 +27,7 @@ public class Workspace {
   @Column(nullable = false)
   private String name;
 
+  @JsonIgnoreProperties("applicationUser")
   @OneToMany(mappedBy = "workspace")
   @Fetch(FetchMode.JOIN)
   private Set<Booking> bookings;

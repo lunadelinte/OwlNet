@@ -42,6 +42,7 @@ public class ApplicationUser {
   @Column
   private String nickname;
 
+  @JsonIgnoreProperties("appplicationUser")
   @OneToMany(mappedBy = "applicationUser")
   @Fetch(FetchMode.JOIN)
   private Set<Booking> bookings;

@@ -28,10 +28,12 @@ public class Booking {
   @Column(nullable = false, unique = true)
   private Date bookingDate;
 
+  @JsonIgnoreProperties("bookings")
   @ManyToOne(optional = false)
   @Fetch(FetchMode.JOIN)
   private Workspace workspace;
 
+@JsonIgnoreProperties("bookings")
 @ManyToOne(optional = false)
 @Fetch(FetchMode.JOIN)
 private ApplicationUser applicationUser;

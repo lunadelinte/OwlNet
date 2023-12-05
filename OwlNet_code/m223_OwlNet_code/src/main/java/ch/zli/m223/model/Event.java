@@ -1,5 +1,6 @@
 package ch.zli.m223.model;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.util.Set;
 
@@ -25,10 +26,10 @@ public class Event {
   private Long id;
 
   @Column(nullable = false)
-  private Time title;
+  private String title;
   
   @Column(nullable = false, unique = true)
-  private Time eventTime;
+  private Date eventDate;
 
   @ManyToMany
   @JoinTable(
@@ -46,20 +47,20 @@ public void setId(Long id) {
     this.id = id;
 }
 
-public Time getTitle() {
+public String getTitle() {
     return title;
 }
 
-public void setTitle(Time title) {
+public void setTitle(String title) {
     this.title = title;
 }
 
-public Time getEventTime() {
-    return eventTime;
+public Date getEventDate() {
+    return eventDate;
 }
 
-public void setEventTime(Time eventTime) {
-    this.eventTime = eventTime;
+public void setEventDate(Date eventDate) {
+    this.eventDate = eventDate;
 }
 
 public Set<ApplicationUser> getApplicationUsers() {
@@ -69,6 +70,7 @@ public Set<ApplicationUser> getApplicationUsers() {
 public void setApplicationUsers(Set<ApplicationUser> applicationUsers) {
     this.applicationUsers = applicationUsers;
 }
+
 
   
 }
