@@ -36,18 +36,6 @@ PgAdmin4 is accessible at http://localhost:5050 for convenient database manageme
 
 Test data can be found in `src/main/resources/import.sql`. They are automatically loaded when Quarkus starts.
 
-### Test Script
-
-Tests are written as Bash scripts with curls instead of using Postman.
-
-The test file is located at `src/main/resources/tests.sh`.
-
-Use `sh tests.sh` on OSX, `./tests.sh` on Linux, and on Windows, please use WSL, thus `./tests.sh`.
-
-The script automatically logs in an Admin and a Member user and saves the Bearer tokens in bash variables. These are then used for the individual tests/requests.
-
-Additionally, one of my runs of the script is saved in `src/main/resources/test_outputs.txt`.
-
 ## Objective
 
 The development of OwlNet encompasses a prototype that integrates a server and client application, communicating via an HTTP API. The platform is designed with the following key actors:
