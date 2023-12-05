@@ -1,4 +1,4 @@
-package ch.owl.net;
+package ch.zli.m223;
   
   import io.quarkus.test.common.QuarkusTestResource;
   import io.quarkus.test.junit.QuarkusTest;

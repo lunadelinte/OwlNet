@@ -1,5 +1,6 @@
 package ch.zli.m223.model;
 
+import java.sql.Time;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -7,7 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.hibernate.annotations.Fetch;
@@ -16,41 +18,42 @@ import org.hibernate.annotations.FetchMode;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-public class Tag {
-  @Id
+public class Workspace {
+      @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Schema(readOnly = true)
   private Long id;
-
+  
   @Column(nullable = false)
-  private String title;
+  private String name;
 
-  @ManyToMany(mappedBy = "tags")
-  @JsonIgnoreProperties("tags")
+  @OneToMany(mappedBy = "workspace")
   @Fetch(FetchMode.JOIN)
-  private Set<Entry> entries;
+  private Set<Booking> bookings;
 
-  public Long getId() {
+public Long getId() {
     return id;
-  }
+}
 
-  public void setId(Long id) {
+public void setId(Long id) {
     this.id = id;
-  }
+}
 
-  public String getTitle() {
-    return title;
-  }
+public String getName() {
+    return name;
+}
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
+public void setName(String name) {
+    this.name = name;
+}
 
-  public Set<Entry> getEntries() {
-    return entries;
-  }
+public Set<Booking> getBookings() {
+    return bookings;
+}
 
-  public void setEntries(Set<Entry> entries) {
-    this.entries = entries;
-  }
+public void setBookings(Set<Booking> bookings) {
+    this.bookings = bookings;
+}
+
+  
 }
