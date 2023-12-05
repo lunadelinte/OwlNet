@@ -17,7 +17,7 @@ This section guides new developers through the process of setting up the OwlNet 
 
 ### Setup Instructions
 
-1. Clone the Git repository: `git clone https://github.com/lunadelinte/OwlNet.git`
+1. Clone the Git repository: `git clone [<repository-url>](https://github.com/lunadelinte/OwlNet.git)`
 2. Ensure Docker is up and running on your machine.
 3. Open the project directory in Visual Studio Code.
 4. Start the development container: Navigate to `Remote-Containers: Open Folder in Container` and select the project folder.
