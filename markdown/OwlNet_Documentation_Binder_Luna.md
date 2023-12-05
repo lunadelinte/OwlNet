@@ -683,7 +683,21 @@ By adhering to these guidelines, OwlNet ensures a thorough testing process, enab
 
   *This section, detailing the implementation of automated tests for registration and authentication, is an essential addition to the OwlNet documentation. It not only serves as a guide for developing robust tests but also as a template for testing other features within the application. This documentation was enhanced with the assistance of ChatGPT for precision and professional structuring.*
 
+
+
+
+
 ### Notes:
 
 -Fachklassendiagramm machen
+
+- important git commands:
+
+- ➜  OwlNet git:(main) ✗ git status
+  On branch main
+  Your branch is up to date with 'origin/main'.
+
+  nothing to commit, working tree clean
+  ➜  OwlNet git:(main) git log > versio_list.txt
+  ➜  OwlNet git:(main) ✗ 
 
